@@ -1,0 +1,134 @@
+html.ie11 {
+
+  a {
+    color: #1503a3;
+    &:hover,
+    &:focus {
+      color: #343434;
+    }
+  }
+
+  [type=checkbox] + label::before, [type=checkbox] + span.label::before, [type=checkbox] + a::before, [type=radio]:not(.raiting) + label::before, [type=radio]:not(.raiting) + a::before, [type=radio]:not(.raiting) + .label > label::before {
+    border: 1px solid #dadada;
+    color: #1503a3;
+  }
+  [type=checkbox]:checked + label::before, [type=checkbox]:checked + span.label::before, [type=checkbox]:checked + a::before {
+    .bRad(0);
+  }
+  [type=radio]:checked:not(.raiting) + label::before, [type=radio]:checked:not(.raiting) + span.label::before, [type=radio]:checked:not(.raiting) + a::before {
+    background: #1503a3;
+  }
+
+  .page-wrapper {
+    display: block;
+  }
+  .page-header {
+    min-height: 187px;
+  }
+  .minicart-container {
+    .minicart-item-button {
+      .checkout.action {
+        background: #343434;
+        .bRad(0);
+      }
+    }
+  }
+  .main-navigation {
+    &> ul {
+      .parent {
+        &> a {
+          display: inline-block;
+          vertical-align: middle;
+          &:after {
+            position: relative;
+            top: 2px;
+            display: inline-block;
+            float: unset;
+            vertical-align: middle;
+          }
+        }
+        &> ul {
+          .boxShadow(0px 1px 12px rgba(0,0,0,0.12));
+        }
+      }
+      &> li {
+        &.open {
+          &.parent {
+            &> a {
+              &.thumbnails {
+                &~ .submenu {
+                  &> li {
+                    @media @desktop {
+                      min-width: 140px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .product-item-information {
+    .fl(auto);
+  }
+
+  .qty-block {
+    .qty-block-control {
+      border: 1px solid #dadada;
+    }
+    .qty {
+      &.input-text {
+        .fl(unset);
+        min-width: 54px;
+      }
+    }
+  }
+
+  .actions {
+    &.main {
+      &.cart {
+        &> a, button {
+          flex-basis: 30%;
+          width: 30%;
+          border: 1px solid #1503a3;
+          .bRad(0);
+          color: #1503a3;
+        }
+      }
+    }
+  }
+
+  .table-checkout-shipping-method,
+  .box-shipping-method {
+    input {
+      &[type='radio'],
+      &[type='checkbox'] {
+        display: inline-block;
+      }
+    }
+  }
+
+  .table-checkout-shipping-method {
+    thead {
+      th {
+        &.col-method {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  .footer-right {
+    .newsletter {
+      &.block {
+        .field {
+          .fl(auto);
+        }
+      }
+    }
+  }
+
+}

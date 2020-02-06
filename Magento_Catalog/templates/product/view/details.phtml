@@ -1,0 +1,39 @@
+<?php
+$helper = $this->helper('Ecomitize\Custom\Helper\Formatter');
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')):?>
+    <div class="product-page-tabs-container">
+        <?php $layout = $block->getLayout(); ?>
+        <div class="product-page-tabs" data-mage-init='{"tabs":{"openedState":"active"}}'>
+            <?php
+                $i = 1;
+                $arrLength = count($detailedInfoGroup)
+            ?>
+            <?php foreach ($detailedInfoGroup as $name):?>
+                <?php
+                    $alias = $layout->getElementAlias($name);
+                        $label = $block->getChildData($alias, 'title');
+                    $html = $layout->renderElement($name);
+                    if (!trim($html)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                ?>
+                <div class="product-page-tabs-labels__item" style="order:<?php echo $i; ?>"
+                     aria-labeledby="tab-label-<?php /* @escapeNotVerified */ echo $alias;?>-title"
+                     data-role="collapsible" id="tab-label-<?php /* @escapeNotVerified */ echo $alias;?>">
+                    <a tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?php /* @escapeNotVerified */ echo $alias; ?>"
+                       id="tab-label-<?php /* @escapeNotVerified */ echo $alias;?>-title">
+                        <?php /* @escapeNotVerified */ echo $label; ?>
+                    </a>
+                </div>
+                <div class="product-page-tabs-content" style="order:<?php echo ($i + $arrLength); ?>" id="<?php /* @escapeNotVerified */ echo $alias; ?>" data-role="content">
+                    <?php /* @escapeNotVerified */ echo $helper->closeTags($html); ?>
+                </div>
+                <?php $i++; ?>
+            <?php endforeach;?>
+        </div>
+    </div>
+<?php endif; ?>

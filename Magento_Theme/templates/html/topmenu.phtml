@@ -1,0 +1,29 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+<div class="backdrop"></div>
+<nav class="main-navigation" data-action="navigation">
+    <ul>
+        <?php echo $block->getChildHtml('menu_first_item') ?>
+        <?php /* @escapeNotVerified */ echo $_menu; ?>
+        <?php echo $block->getChildHtml('menu_last_item') ?>
+        <!-- <li class="level0 category-item level-top products-toggle">
+            
+        </li> -->
+    </ul>
+</nav>

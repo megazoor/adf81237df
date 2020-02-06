@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+<!--        <referenceBlock name="product.info.review" remove="true"/>-->
+        <referenceBlock name="product.info.addto" remove="true"/>
+        <referenceBlock name="product.info.stock.sku" remove="true"/>
+        <referenceBlock name="product.info.social" remove="true"/>
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Catalog\Block\Product\View" name="patents.tab" template="Magento_Catalog::product/tab/patents.phtml" group="detailed_info">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Patents</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Catalog\Block\Product\View" name="craftsmanship.tab" template="Magento_Catalog::product/tab/craftsmanship.phtml" group="detailed_info">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Craftsmanship</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <move element="page.main.title" destination="content" before="-"/>
+        <move element="powerreviews_reviewdisplay.reviewdisplay" destination="content" after="page.main.title"/>
+        <move element="product.info.overview" destination="product.info.main" before="product.info"/>
+        <move element="product.info.details" destination="content" after="product-page-info"/>
+<!--        <referenceBlock name="reviews.tab" remove="true"/>-->
+        <referenceBlock name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.video" template="Magento_Catalog::product/view/video.phtml" after="-" />
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.secondary" template="Magento_Catalog::product/view/secondary.phtml" before="product.info.video">
+                <block class="Magento\Cms\Block\Block" name="block.product.secondary.bottom">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">block_product_secondary_bottom</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceBlock>
+<!--        <referenceBlock name="recently_viewed">-->
+<!--            <arguments>-->
+<!--                <argument name="template" xsi:type="string">Magento_Catalog::product/list/items.phtml</argument>-->
+<!--            </arguments>-->
+<!--        </referenceBlock>-->
+        <referenceBlock name="recently_viewed" remove="true"/>
+        <referenceBlock name="catalog.product.related" remove="true"/>
+        <referenceBlock name="product.info.details">
+            <action method="unsetChild" ifconfig="catalog/review/active">
+                <argument name="block" xsi:type="string">reviewdisplay.tab</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

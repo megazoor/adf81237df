@@ -1,0 +1,40 @@
+<?php
+$helper = $this->helper('PowerReviews\ReviewDisplay\Helper\Data');
+$products = $this->getCurrentCategory()->getProductCollection()->addAttributeToSelect('page_id');
+?>
+
+<script>
+    require(['jquery', 'jquery/ui'], function ($) {
+        $(function () {
+            var snippetNames = [];
+            var snippetCollection = [];
+
+            <?php foreach($products as $product): ?>
+            <?php if($product->isVisibleInCatalog() && $product->isAvailable()): ?>
+            snippetNames.push({
+                'page_id': '<?= urlencode($product->getData('sku')) ?>', 'snippet_name': 'snippet-<?= trim(urlencode($product->getData('sku'))); ?>', 'parent_page_id': '<?=urlencode($product->getData('page_id') ? $product->getData('page_id') : $product->getData('sku')) ?>'
+            });
+            <?php endif; ?>
+            <?php endforeach; ?>
+
+            for (i = 0; i < snippetNames.length; i++) {
+                if (this.getElementById(snippetNames[i].snippet_name)) {
+                    snippetCollection.push(
+                        {
+                            api_key: '<?= $helper->getApiKey(); ?>',
+                            locale: '<?= $helper->getLocale(); ?>',
+                            merchant_group_id: '<?= $helper->getMerchantGroupId(); ?>',
+                            merchant_id: '<?= $helper->getMerchantId(); ?>',
+                            page_id: snippetNames[i].parent_page_id.toString(),
+                            components: {
+                                CategorySnippet: snippetNames[i].snippet_name.toString()
+                            }
+                        }
+                    )
+                }
+            }
+            POWERREVIEWS.display.render(snippetCollection);
+        })
+        ;
+    });
+</script>

@@ -1,0 +1,45 @@
+.form {
+  &.password.reset,
+  &.send.confirmation,
+  &.password.forget,
+  &.create.account {
+    @media @desktop {
+      min-width: 600px !important;
+      width: 50% !important;
+    }
+  }
+}
+
+.account {
+  .toolbar {
+    .pager {
+      .flex();
+    }
+    .toolbar-amount {
+      flex-basis: 33%;
+      width: 33%;
+      text-align: left;
+    }
+    .pages {
+      position: relative;
+      flex-basis: 33%;
+      width: 33%;
+      strong {
+        &.page {
+          .bRad(50%);
+          min-width: 30px;
+        }
+      }
+      a {
+        &.page {
+          min-width: 30px;
+        }
+      }
+    }
+    .limiter {
+      flex-basis: 33%;
+      width: 33%;
+      text-align: right;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@desktop: ~"(min-width: 768px)";
+@lgDesktop: ~"(min-width: 1025px)";
+@tablet: ~"(min-width: 768px) and (max-width: 1024px)";
+@tablet_vertical: ~"(min-width: 768px) and (max-width: 991px)";
+@phone: ~"(max-width: 767px)";
+
+@txt: #1b1b1b;
+@txt2: #2a2a2a;
+@blue: #1503a3;
+@hover: #343434;
+@redPrice: #e50055;
+
+.flex () {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.flexWrap () {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.flexNoWrap () {
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+.fl (@num) {
+  -webkit-box-flex: @num;
+  -ms-flex: @num;
+  flex: @num;
+}
+.bRad (@num) {
+  -webkit-border-radius: @num;
+  -moz-border-radius: @num;
+  border-radius: @num;
+}
+.boxShadow (@val) {
+  -webkit-box-shadow: @val;
+  -moz-box-shadow: @val;
+  box-shadow: @val;
+}
+
+.transForm (@val) {
+  -webkit-transform: @val;
+  -moz-transform: @val;
+  -ms-transform: @val;
+  -o-transform: @val;
+  transform: @val;
+}
+
+:root {
+  --main-color: @blue;
+  --main-hover-color: @hover;
+}

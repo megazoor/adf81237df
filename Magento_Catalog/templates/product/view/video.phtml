@@ -1,0 +1,5 @@
+<?php
+$_product = $block->getProduct();
+if ($pvideo = $_product->getData('video_code')):?>
+<div class="product-video-block"><?php echo $_product->getData('video_code'); ?></div>
+<?php endif; ?>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="home.page.banners" remove="true"/>
+        <referenceBlock name="new_arrivals" remove="true"/>
+        <referenceBlock name="best_seller" remove="true"/>
+        <referenceContainer name="footer">
+            <container name="footer.top.index" label="Footer top Index" htmlTag="div" htmlClass="footer-top" before="-">
+                <block class="Magento\Cms\Block\Block" name="footer.top.links.index">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">footer_top_links_index</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

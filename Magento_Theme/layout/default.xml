@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<remove src="Magento_Swatches::css/swatches.css"/>
+	</head>
+	<body>
+		<referenceBlock name="navigation.menu.button" remove="true"/>
+		<referenceBlock name="top.links" remove="true"/>
+		<referenceBlock name="authorization-link-login" remove="true"/>
+		<referenceBlock name="footer-top" remove="true"/>
+		<move element="navigation.menu.container" destination="header-wrapper" after="-"/>
+
+		<referenceContainer name="header.panel">
+			<container name="top-slider" label="Top Slider" htmlTag="div" htmlClass="top-slider" before="-" />
+		</referenceContainer>
+
+		<referenceContainer name="navigation.menu.container">
+			<container name="header-phone" label="Header phone" htmlTag="div" htmlClass="header-phone" before="-">
+				<block class="Magento\Cms\Block\Block" name="header_phone">
+					<arguments>
+						<argument name="block_id" xsi:type="string">header_phone</argument>
+					</arguments>
+				</block>
+			</container>
+		</referenceContainer>
+		 <referenceBlock name="catalog.topnav">
+			<block class="Magento\Cms\Block\Block" name="menu_first_item">
+				<arguments>
+					<argument name="block_id" xsi:type="string">menu_first_item</argument>
+				</arguments>
+			</block>
+			<block class="Magento\Cms\Block\Block" name="menu_last_item">
+				<arguments>
+					<argument name="block_id" xsi:type="string">menu_last_item</argument>
+				</arguments>
+			</block>
+		</referenceBlock>
+		<move element="main.header.menu" destination="header-wrapper" after="-"/>
+		<move element="minicart" destination="main.header.menu" after="-"/>
+		<referenceBlock name="form.subscribe">
+			<block class="Magento\Cms\Block\Block" name="newsletter_notice">
+				<arguments>
+					<argument name="block_id" xsi:type="string">newsletter_notice</argument>
+				</arguments>
+			</block>
+		</referenceBlock>
+		<referenceBlock name="footer-social">
+			<block class="Magento\Cms\Block\Block" name="footer_social_links">
+				<arguments>
+					<argument name="block_id" xsi:type="string">footer_social_links</argument>
+				</arguments>
+			</block>
+		</referenceBlock>
+		<referenceContainer name="footer">
+			<container name="footer-bottom" label="Footer bottom" htmlTag="div" htmlClass="footer-bottom" after="-">
+				<block class="Magento\Cms\Block\Block" name="copyright.links" after="copyright">
+					<arguments>
+						<argument name="block_id" xsi:type="string">copyright_links</argument>
+					</arguments>
+				</block>
+			</container>
+			<container name="footer-badge" label="Footer badge" htmlTag="div" htmlClass="footer-badge" after="-">
+				<block class="Magento\Cms\Block\Block" name="footer.badge">
+					<arguments>
+						<argument name="block_id" xsi:type="string">footer_badge</argument>
+					</arguments>
+				</block>
+			</container>
+			<block class="Magento\Framework\View\Element\Template" name="scroll.to.top.button" after="-" template="Magento_Theme::html/scroll-top.phtml" />
+		</referenceContainer>
+
+		<move element="copyright" destination="footer-bottom" before="-"/>
+	</body>
+</page>

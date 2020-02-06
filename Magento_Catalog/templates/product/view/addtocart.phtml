@@ -1,0 +1,104 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()): ?>
+	<div class="box-tocart">
+        <?php if ($block->shouldRenderQuantity()): ?>
+			<div class="field qty qty-block">
+				<div class="control qty-block-control">
+					<a href="#qty"
+					   class="qty-block-control__button qty-block-control__button--minus"
+					   data-value="-1"
+					   data-target="qty"
+					   data-toggle="spinner">
+						<span>-</span>
+					</a>
+					<input type="number"
+					       name="qty"
+					       id="qty"
+					       maxlength="12"
+					       data-min="<?php /* @escapeNotVerified */
+                           echo $block->getProductDefaultQty() * 1 ?>"
+					       value="<?php /* @escapeNotVerified */
+                           echo $block->getProductDefaultQty() * 1 ?>"
+					       title="<?php /* @escapeNotVerified */
+                           echo __('Qty') ?>" class="input-text qty"
+					       data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+					/>
+					<a href="#qty"
+					   class="qty-block-control__button qty-block-control__button--plus"
+					   data-value="1"
+					   data-target="qty"
+					   data-toggle="spinner">
+						<span>+</span>
+					</a>
+				</div>
+			</div>
+        <?php endif; ?>
+		<div class="actions">
+			<button type="submit"
+			        title="<?php /* @escapeNotVerified */
+                    echo $buttonTitle ?>"
+			        class="action primary tocart"
+			        id="product-addtocart-button">
+				<span><?php /* @escapeNotVerified */
+                    echo $buttonTitle ?></span>
+			</button>
+			<a href="javascript:void(0)"
+			   title="<?= __('Checkout') ?>"
+			   class="action primary checkout"
+			   id="product-checkout-button">
+				<span><?= __('Add to Cart and Checkout') ?></span>
+			</a>
+			<input type="hidden" id="redirect_to_checkout" name="redirect_to_checkout" value="0">
+            <?php echo $block->getChildHtml('', true) ?>
+		</div>
+	</div>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/product/view/validation": {
+                "radioCheckboxClosest": ".nested"
+            }
+        }
+    }
+
+
+</script>
+<script>
+    require([
+        'jquery',
+        'domReady!'
+    ], function ($) {
+        $('#product-checkout-button').on('click', function () {
+            $('#redirect_to_checkout').val('2');
+            $('#product_addtocart_form').submit();
+        });
+        $('#product-addtocart-button').on('click', function () {
+            $('#redirect_to_checkout').val('0');
+        });
+    });
+</script>
+<?php if (!$block->isRedirectToCartEnabled()) : ?>
+	<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "catalogAddToCart": {
+                "bindSubmit": false
+            }
+        }
+    }
+
+
+	</script>
+<?php endif; ?>

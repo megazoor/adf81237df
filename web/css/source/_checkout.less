@@ -1,0 +1,136 @@
+.opc-wrapper {
+  .form-login,
+  .form-shipping-address,
+  .methods-shipping {
+    @media @phone {
+      background: #fff;
+    }
+  }
+  @media @tablet_vertical {
+    width: 57%;
+  }
+}
+
+.opc-sidebar {
+  @media @tablet_vertical {
+    width: 43%;
+  }
+}
+
+.checkout-payment-method {
+  .ccard {
+    &>.field {
+      &.cvv {
+        &>.control {
+          @media @phone {
+            .flex();
+          }
+        }
+      }
+    }
+  }
+  .field-tooltip {
+    .field-tooltip-content {
+      @media @phone {
+        right: auto;
+        left: 0;
+        &:before, &:after {
+          display: none !important;
+        }
+      }
+    }
+  }
+}
+
+.payment-method-braintree {
+  .hosted-control {
+    &.hosted-cid {
+      @media @phone {
+        order: -1;
+      }
+    }
+  }
+  .field-tooltip {
+    @media @phone {
+      position: static;
+      order: -1;
+      margin-left: 15px;
+    }
+  }
+}
+
+.checkout-index-index {
+  .modal-popup {
+    .modal-footer {
+      .action {
+        @media @phone {
+          display: block;
+          width: 100%;
+          border: 1px solid #343434 !important;
+        }
+      }
+    }
+  }
+  .checkout-block {
+    @media @phone {
+      padding: 0;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.amcheckout-step-container {
+  .amcheckout-shipping-methods {
+    .amcheckout-method {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+  .payment-method-content {
+    &>.actions-toolbar {
+      &>.primary {
+        display: block;
+        float: none !important;
+        .action {
+          &.primary {
+            width: 100%;
+            font-size: 14px !important;
+            font-weight: 600;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+  }
+}
+.action.primary.checkout{
+  color:#fff;
+}
+.modal-custom {
+  &.opc-sidebar {
+    &+ .modal-custom-overlay {
+      cursor: pointer;
+      &:before {
+        height: 44px;
+        width: 44px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 16px;
+        line-height: 44px;
+        color: #fff;
+        content: '\e616';
+        font-family: 'luma-icons';
+        margin: 0;
+        vertical-align: top;
+        display: inline-block;
+        font-weight: 600;
+        overflow: hidden;
+        speak: none;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+  }
+}
